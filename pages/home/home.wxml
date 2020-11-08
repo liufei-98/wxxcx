@@ -1,0 +1,212 @@
+<navbar params="{{params}}" />
+<!-- 头部搜索 -->
+<view class="search-wipe" style="background:{{ocolor}};top:{{barH}}rpx">
+        <input class="weui-input" placeholder="请输入商品名称" bindtap="toSearch"/>
+        <image class="search-icon1" src="../../images/tabBar/search.png"></image>
+        <image class="search-icon2" src="../../images/tabBar/info.png"></image>
+</view>
+<!-- 分类切换导航条 -->
+<scroll-view class="tab-nav-wrap" scroll-x="true" scroll-left="{{oLeft}}" scroll-with-animation="true" style="background:{{ocolor}};top:{{barH+searchH*2}}rpx">
+  <view class="tab-nav">
+    <view class="tab-item  {{currentIndex==index?'active':''}}" wx:for="{{tabNavDatas}}" wx:key="index" data-current="{{index}}" bindtap="changeSwiper">{{item.title}}</view>
+  </view>
+</scroll-view>
+<!-- 每页内容 -->
+<swiper bindchange="changeTab"  style="height:{{widH-searchH-navH-barH/2}}px;background:#f4f4f4;top:{{barH+searchH*2+navH*2}}rpx" current="{{currentIndex}}" class="page-con">
+  <!-- 首页 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore"  bindscroll="scrollPage">
+      <!-- 变色背景 -->
+      <view class="swiper2" style="background:{{ocolor}}"></view>
+      <!-- 轮播图 -->
+      <swiper class="swiper1" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{current}}" bindchange="swiperChange">
+        <block wx:for="{{swipeDatas}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item.swipe_img}}" class="slide-image"></image>
+          </swiper-item>  
+        </block>
+      </swiper>
+      <!-- 品牌专区分类轮播图 -->
+      <swiper class="swiper3">
+        <swiper-item>
+          <template is="member-swipe" data="{{memberDatas:memberLists1}}"></template>
+        </swiper-item>
+        <swiper-item>
+          <template is="member-swipe" data="{{memberDatas:memberLists2}}"></template>
+        </swiper-item>
+        <swiper-item>
+          <template is="member-swipe" data="{{memberDatas:memberLists3}}"></template>
+        </swiper-item>
+      </swiper>
+      
+      <!-- 新闻轮播 -->
+      <view class="news-wrap">
+        <!-- 分割线 -->
+        <view class="rule"></view>
+        <image class="header-img" src="/images/dsc/177_P_1597978466633.png"></image>
+        <view class="news-list">
+          <template is="swipe-news"></template>
+        </view>
+        <image class="last-img" src="/images/tabBar/youjiantou.png"></image>
+      </view>
+
+      <!-- 广告图片 -->
+      <view class="ad-img">
+        <image src="/images/dsc/slide.png"></image>
+      </view>
+
+      <!-- 限时秒杀 -->
+      <view class="seckill-wrap">
+        <view class="seckill-header">
+          <image src="/images/dsc/timekill.png"></image>
+          <view class="time-down">
+            <view>距结束还剩:</view>
+            <text>{{hr}}</text>
+            :
+            <text>{{min}}</text>
+            :
+            <text>{{sec}}</text>
+          </view>
+        </view>
+        <view class="seckill-content">
+          <view class="ulList">
+            <view class="{{currentNum==index?'active':''}}" data-current="{{index}}" bindtap="changeTime" wx:for="{{seckillDatas}}" wx:key="index">
+              <text class="time">{{item.time}}</text>
+              <text class="item" wx:if="{{item.isshow==show}}">{{item.statenow}}</text>
+              <text class="item" wx:else>{{item.statewait}}</text>
+            </view>
+          </view>
+          <swiper class="seckill-goods" bindchange="changelist" style="height:400rpx" current="{{currentNum}}">
+            <swiper-item>
+              <scroll-view scroll-x="true" style="height:400rpx;width:100%">
+                <template is="seckill" data="{{seckillgoodsDatas:seckillgoodsLists1}}"></template>
+              </scroll-view>
+            </swiper-item>
+            <swiper-item>
+              <scroll-view scroll-x="true" style="height:400rpx;width:100%">
+                <template is="seckill" data="{{seckillgoodsDatas:seckillgoodsLists2}}"></template>
+              </scroll-view>
+            </swiper-item>
+            <swiper-item>
+              <scroll-view scroll-x="true" style="height:400rpx;width:100%">
+                <template is="seckill" data="{{seckillgoodsDatas:seckillgoodsLists3}}"></template>
+              </scroll-view>
+            </swiper-item>
+            <swiper-item>
+              <scroll-view scroll-x="true" style="height:400rpx;width:100%">
+                <template is="seckill" data="{{seckillgoodsDatas:seckillgoodsLists4}}"></template>
+              </scroll-view>
+            </swiper-item>
+          </swiper>
+        </view>
+        <view class="seckill-footer">
+          查看更多秒杀商品
+        </view>
+      </view>
+      <!-- 为你推荐 -->
+      <view class="isbast">
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+      </view>
+    </scroll-view>
+  </swiper-item>
+<!-- 家用电器 -->
+  <swiper-item>
+  <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore">
+    <view>
+      <template is="index-header" data="{{headerDatas:EleheaderLists}}"></template>
+    </view>
+    <view>
+      <template is="index-brand" data="{{brandDatas:ElebrandLists}}"></template>
+    </view>
+    <view>
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+    </view>
+  </scroll-view>
+  </swiper-item>
+  <!-- 男装女装 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore">
+    <view>
+      <template is="index-header" data="{{headerDatas:PsheaderLists}}"></template>
+    </view>
+    <view>
+      <template is="index-brand" data="{{brandDatas:PsbrandLists}}"></template>
+    </view>
+    <view>
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+    </view>
+  </scroll-view>
+  </swiper-item>
+  <!-- 靴鞋箱包 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore">
+    <view>
+      <template is="index-header" data="{{headerDatas:BoxheaderLists}}"></template>
+    </view>
+    <view>
+      <template is="index-brand" data="{{brandDatas:BoxbrandLists}}"></template>
+    </view>
+    <view>
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+    </view>
+  </scroll-view>
+  </swiper-item>
+  <!-- 手机数码 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore">
+    <view>
+      <template is="index-header" data="{{headerDatas:PhheaderLists}}"></template>
+    </view>
+    <view>
+      <template is="index-brand" data="{{brandDatas:PhbrandLists}}"></template>
+    </view>
+    <view>
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+    </view>
+  </scroll-view>
+  </swiper-item>
+  <!-- 电脑办公 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore">
+    <view>
+      <template is="index-header" data="{{headerDatas:CpheaderLists}}"></template>
+    </view>
+    <view>
+      <template is="index-brand" data="{{brandDatas:CpbrandLists}}"></template>
+    </view>
+    <view>
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+    </view>
+  </scroll-view>
+  </swiper-item>
+  <!-- 家居家纺 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore">
+    <view>
+      <template is="index-header" data="{{headerDatas:HsheaderLists}}"></template>
+    </view>
+    <view>
+      <template is="index-brand" data="{{brandDatas:HsbrandLists}}"></template>
+    </view>
+    <view>
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+    </view>
+  </scroll-view>
+  </swiper-item>
+  <!-- 个人化妆 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height:{{widH-searchH-navH-barH/2}}px" bindscrolltolower="loadMore">
+    <view>
+      <template is="index-header" data="{{headerDatas:FcheaderLists}}"></template>
+    </view>
+    <view>
+      <template is="index-brand" data="{{brandDatas:FcbrandLists}}"></template>
+    </view>
+    <view>
+      <template is="index-content" data="{{goodsDatas:goodsLists}}"></template>
+    </view>
+  </scroll-view>
+  </swiper-item>
+</swiper>
+<!-- 引入外部模板文件 -->
+<import src="../template/template.wxml"/> 

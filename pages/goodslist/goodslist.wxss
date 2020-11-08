@@ -1,0 +1,313 @@
+@import "/assets/fonts/iconfont.wxss";
+.goodslist-header{
+  width: 100%;
+  height: 60rpx;
+  padding: 16rpx 0;
+  border-bottom: 2rpx solid #f1f1f1;
+  position: relative;
+}
+.goodslist-header input{
+  width: 75%;
+  height: 60rpx;
+  border:2rpx solid #f1f1f1;
+  margin-left: 20rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  padding: 0 30rpx;
+}
+.goodslist-header .icon-image{
+  width: 10%;
+  height: 60rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 20rpx;
+}
+.goodslist-header .icon-image .iconfont{
+  width: 100%;
+  height: 100%;
+  font-size: 40rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #666;
+}
+.goodslist-tab{
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  justify-content: start;
+}
+.goodslist-tab .item{
+  width: 20%;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 26rpx;
+  position: relative;
+}
+.goodslist-tab .item .iconfont{
+  position: absolute;
+  top: 2rpx;
+  right: 20rpx;
+  font-size: 26rpx;
+}
+.goodslist-tab .active{
+  color: #f00;
+}
+.goodslist-content{
+  width: 100%;
+  background: #f4f4f4;
+}
+.goodslist-content .lianghang{
+  width: 96%;
+  margin: 0 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.goodslist-content .lianghang .goodslist-goods{
+  width: 49%;
+  height: 620rpx;
+  margin: 20rpx 0;
+  border-radius: 10rpx;
+  overflow: hidden;
+  background: #fff;
+}
+.goodslist-content .lianghang .goodslist-goods image{
+  width: 100%;
+  height: 400rpx;
+}
+.goodslist-content .lianghang .goodslist-goods .goodslist-title{
+  font-size: 28rpx;
+  width: 100%;
+  height: 80rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: #666;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.goodslist-content .lianghang .goodslist-goods .goodslist-price{
+  color: #f00;
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+}
+.goodslist-content .lianghang .goodslist-goods .goodslist-price::before{
+  content: "￥";
+  color: #f00;
+  font-size: 26rpx;
+}
+.goodslist-content .lianghang .goodslist-goods .goshop{
+  font-size: 26rpx;
+  color: #f00;
+  background: #fef0f0;
+  display: inline-block;
+  width: 72rpx;
+  height: 38rpx;
+  margin-left: 20rpx;
+  line-height: 38rpx;
+  text-align: center;
+}
+.goodslist-content .lianghang .goodslist-goods .goshopnum{
+  display: inline-block;
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 10rpx;
+  margin-right: 74rpx;
+}
+.goodslist-content .lianghang .goodslist-goods .iconfont{
+  display: inline-block;
+  font-size: 26rpx;
+  color: #f00;
+}
+.goodslist-content .yihang{
+  width: 96%;
+  margin: 0 2%;
+}
+.goodslist-content .yihang .goodslist-goods{
+  width: 100%;
+  height: 190rpx;
+  margin-top: 20rpx;
+  padding: 16rpx;
+  border-radius: 10rpx;
+  background: #fff;
+  box-sizing: border-box;
+  position: relative;
+}
+.goodslist-content .yihang .goodslist-goods image{
+  width: 25%;
+  height: 160rpx;
+}
+.goodslist-content .yihang .goodslist-goods .info{
+  width: 68%;
+  height: 160rpx;
+  position: absolute;
+  top: 10rpx;
+  left: 210rpx;
+}
+.goodslist-content .yihang .goodslist-goods .info .goodslist-title{
+  font-size: 26rpx;
+  width: 100%;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: #666;
+  box-sizing: border-box;
+}
+.goodslist-content .yihang .goodslist-goods .info .goodslist-price{
+  color: #f00;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.goodslist-content .yihang .goodslist-goods .info .goodslist-price::before{
+  content: "￥";
+  font-size: 26rpx;
+  color: #f00;
+}
+.goodslist-content .yihang .goodslist-goods .info .goshop{
+  font-size: 26rpx;
+  color: #f00;
+  background: #fef0f0;
+  display: inline-block;
+  width: 72rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  text-align: center;
+}
+.goodslist-content .yihang .goodslist-goods .info .goshopnum{
+  display: inline-block;
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+.goodslist-content .yihang .goodslist-goods .info .iconfont{
+  display: inline-block;
+  font-size: 26rpx;
+  color: #f00;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.mask-wrap{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  z-index: 10;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99;
+}
+.screen-wrap{
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #eee;
+  z-index: 999;
+}
+.screen-wrap .ziying{
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  line-height: 100rpx;
+  font-size: 26rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.screen-wrap .ziying switch{
+  position: absolute;
+  top: 0;
+  right: 5%;
+}
+.screen-wrap .huo{
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  line-height: 100rpx;
+  position: relative;
+  margin-top: 20rpx;
+}
+.screen-wrap .huo view{
+  display: inline-block;
+  line-height: 70rpx;
+  font-size: 26rpx;
+  background-color: #eee;
+  margin-left: 20rpx;
+  padding: 0 40rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+}
+.screen-wrap .huo .active{
+  color: #f00;
+  border: 2rpx solid #f00;
+  background-color: #fff;
+}
+.screen-wrap .price{
+  width: 100%;
+  height: 200rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.screen-wrap .price .price-top{
+  width: 100%;
+  height: 100rpx;
+  font-size: 26rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #eee;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.screen-wrap .price .price-bottom{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.screen-wrap .price .price-bottom view{
+  width: 40%;
+  height: 70rpx;
+}
+.screen-wrap .price .price-bottom view input{
+  width: 100%;
+  font-size: 26rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: #eee;
+}
+.screen-wrap .choice{
+  width: 100%;
+  height: 100rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+.screen-wrap .choice view{
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 26rpx;
+}
+.screen-wrap .choice .close{
+  background: #fff;
+}
+.screen-wrap .choice .make{
+  background: #f00;
+  color: #fff;
+}

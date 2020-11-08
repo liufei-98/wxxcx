@@ -1,0 +1,131 @@
+<import src="/wxParse/wxParse.wxml"></import>
+<!-- 自定义头部 -->
+<view class="navbar" style="height:{{barH}}rpx;background:rgba(255,255,255,{{opacity}})">
+  <view class="goback iconfont iconjiantou-copy" bindtap="goback" style="color:{{color}};background:rgba(41,47,54,{{bgc}})"></view>
+  <view class="navbar-title" style="opacity:{{opacity}}">
+  <view class="navbar-item {{activeIndex==index?'active':''}}" data-id="detail{{index}}" data-index="{{index}}" wx:for="{{titleArr}}" wx:key="index" bindtap="tabnavFn">{{item}}</view>
+  <view class="navbar-item">评论</view>
+  </view>
+</view>
+<!-- 商品内容 -->
+<view class="detail-content" style="background:#f4f4f4">
+  <scroll-view style="height:{{widH}}px" scroll-y="true" bindscrolltolower="loadMore" bindscroll="scrollPage" scroll-into-view="{{goId}}">
+    <!-- 商品区 -->
+    <view id="detail0">
+      <!-- 轮播图 -->
+      <swiper class="detail-swiper" autoplay="true" indicator-dots="true" circular="true">
+        <block wx:for="{{goodsDetailData.gallery_list}}" wx:key="index">
+          <swiper-item class="detail-swiper-item">
+            <image src="{{item.img_url}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 价格 -->
+      <view class="delail-price">
+        <!-- membership_card_discount_price会员卡折扣价格
+              market_price 市场价格 
+              shop_price底价
+              sales_volume销售量
+              goods_number库存-->
+        <text class="price">{{goodsDetailData.shop_price}}</text>
+        <text class="dprice">{{goodsDetailData.market_price}}</text>
+      </view>
+      <!-- 标题 -->
+      <view class="detail-title">
+        <view class="title">{{goodsDetailData.goods_name}}</view>
+        <view class="goods-info">
+          <view>累计销量{{goodsDetailData.sales_volume}}</view>
+          <view>库存{{goodsDetailData.goods_number}}</view>
+          <view>{{goodsDetailData.basic_info.city_name}}  {{goodsDetailData.basic_info.province_name}}</view>
+        </view>
+      </view>
+      <!-- 服务 -->
+      <view class="detail-serve">
+        <view class="integral"><text>赠送积分：</text>{{goodsDetailData.give_integral}}积分</view>
+        <view><text>服务：</text>正品保证 七天无理由退换 闪速配送</view>
+      </view>
+      <!-- 运输 -->
+      <view class="detail-carriage">
+        <view class="site-wrap">
+          <picker mode = "region" value="{{cityDatas}}" bindchange="changeCity">
+            <view class="site"><text>送至：</text>{{cityDatas[0]}}-{{cityDatas[1]}}-{{cityDatas[2]}}</view>
+            <view class="iconfont iconiconfontzhizuobiaozhun023127"></view>
+          </picker>
+        </view>
+        <view class="carriage"><text>运费：</text>￥0.00</view>
+      </view>
+      <!-- 选择商品数量 -->
+      <view class="detail-select" bindtap="showMaskFn">
+          <view class="select"><text>已选:</text>{{buyNum}}</view>
+          <view class="iconfont iconiconfontzhizuobiaozhun023127"></view>
+      </view>
+    </view>
+    <!-- 详情区 -->
+    <view id="detail1">
+      <view class="goods-detail-header">商品详情</view>
+      <view class="goods-detail-content">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+      </view>
+    </view>
+    <!-- 推荐区 -->
+    <view id="detail2">
+      <view class="guess-like">猜你喜欢</view>
+      <view class="index-content-wrap">
+        <view class="index-content-goods" wx:for="{{goodsDatas}}" wx:key="index">
+          <navigator url="/pages/goodsdetail/goodsdetail?goods_id={{item.goods_id}}">
+            <image src="{{item.goods_thumb}}"></image>
+            <view class="title">{{item.goods_name}}</view>
+            <view class="price">{{item.shop_price_formated}}</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <!-- 评论区在其它页 -->
+  </scroll-view>
+</view>
+
+<!-- 弹窗蒙版 -->
+<view class="mask" wx:if="{{showMask}}" bindtap="closeMaskFn"></view>
+<view class="screen-wrap" wx:if="{{showMask}}" animation="{{animationData}}">
+  <view class="screen-info-wrap">
+    <image src="{{goodsDetailData.gallery_list[0].img_url}}"></image>
+    <view class="screen-info">
+      <view class="title">{{goodsDetailData.goods_name}}</view>
+      <view class="price">{{goodsDetailData.shop_price}}</view>
+      <view class="kucun">库存{{goodsDetailData.goods_number}}</view>
+    </view>
+    <view class="iconfont iconguanbi" bindtap="closeMaskFn"></view>
+  </view>
+  <view class="screen-num">
+    <view class="num">数量</view>
+    <view class="changenum">
+      <button bindtap="changeNum" data-num="0">-</button>
+      <input type="text" adjust-position="true" value="{{buyNum}}" bindinput="inputNum"/>
+      <button bindtap="changeNum" data-num="1">+</button>
+    </view>
+  </view>
+  <view class="screen-buy">
+    <button class="buy-btn">立即购买</button>
+    <button class="buy-car" bindtap="addCartOk">确认</button>
+  </view>
+</view>
+<!-- 底部 -->
+<view class="footer-wrap">
+  <view class="footer-item">
+    <button class="kf" session-from="{{goodsDetailData.goods_id}}" open-type="contact"></button>
+    <view class="iconfont iconkefu"></view>
+    <view>客服</view>
+  </view>
+  <view class="footer-item">
+    <view class="iconfont iconshoucang"></view>
+    <view>收藏</view>
+  </view>
+  <view class="footer-item" bindtap="toCart">
+    <view class="iconfont icongouwuchezhengpin"></view>
+    <view>购物车</view>
+    <view class="cartnum">{{cartNum}}</view>
+  </view>
+  <view class="footer-item addcart" bindtap="showMaskFn">加入购物车</view>
+  <view class="footer-item nowbuy">立即购买</view>
+</view>
+

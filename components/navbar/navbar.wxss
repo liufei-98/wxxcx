@@ -1,0 +1,24 @@
+/* components/navbar/navbar.wxss */
+.navbar{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #f34646;
+}
+.navbar .goback{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 20rpx;
+}
+.navbar .navbar-title{
+  font-size: 30rpx;
+  color: #fff;
+  position: absolute;
+  bottom: 20rpx;
+  left: 50%;
+  margin-left: -45rpx;
+}

@@ -1,0 +1,5 @@
+<navbar params="{{params}}" />
+<view class="search-wrap" style="margin-top:{{barH}}rpx">
+  <input type="text" placeholder="请输入商品"/>
+  <view class="iconfont iconsousuo1"></view>
+</view>

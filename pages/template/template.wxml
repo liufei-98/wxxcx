@@ -1,0 +1,93 @@
+<!-- 定义一个外部公共模板 -->
+
+<template name="index-header">
+  <view class="index-header-wrap">
+    <view class="index-header-goods" wx:for="{{headerDatas}}" wx:key="index">
+      <image src="{{item.touch_icon}}"></image>
+      <view class="catName">{{item.cat_name}}</view>
+    </view>
+  </view>
+</template>
+
+<template name="index-brand">
+  <view class="index-brand-wrap">
+    <view class="index-brand-goods" wx:for="{{brandDatas}}" wx:key="index">
+      <image src="{{item.brand_logo}}"></image>
+      <view class="brandName">{{item.brand_name}}</view>
+    </view>
+  </view>
+</template>
+
+<template name="index-content">
+  <view class="index-content-wrap">
+    <view class="index-content-goods" wx:for="{{goodsDatas}}" wx:key="index">
+      <navigator url="/pages/goodsdetail/goodsdetail?goods_id={{item.goods_id}}">
+        <image src="{{item.goods_img}}"></image>
+        <view class="title">{{item.title}}</view>
+        <view class="price">{{item.shop_price_formated}}</view>
+      </navigator>
+    </view>
+  </view>
+</template>
+
+<template name="member-swipe">
+  <view class="member-swipe-wrap">
+    <view class="member-list" wx:for="{{memberDatas}}" wx:key="index">
+      <image src="{{item.icon_img}}"></image>
+      <view class="member-title">{{item.icon_title}}</view>
+    </view>
+  </view>
+</template>
+
+<template name="swipe-news">
+  <swiper class="swiper4" autoplay="true" vertical="true" circular="true" interval="5000">
+    <swiper-item>
+      <view class="news">故宫角楼上空惊现七彩祥云</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="news">央行将发行2021版熊猫金银纪念币</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="news">中国人均预期寿命增加近1岁</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="news">人社部:确保养老金按时足额发放</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="news">专家回应大陆军机巡台常态化</view>
+    </swiper-item>
+  </swiper>
+</template>
+
+<template name="seckill">
+  <view class="seckill-goods-wrap">
+    <view class="skillGoods" wx:for="{{seckillgoodsDatas}}" wx:key="index">
+      <image src="{{item.goods_thumb}}"></image>
+      <view class="goodsInfo">
+        <text class="goodsName">{{item.goods_name}}</text>
+        <text class="secPrice">{{item.sec_price_formated}}</text>
+        <text class="marketPrice">{{item.market_price_formated}}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="adimage">
+  <view class="adimage-wrap">
+    <image src="{{adimageData}}"></image>
+  </view>
+</template>
+
+<template name="content-category">
+  <view class="content-category-wrap">
+    <view class="little-category" wx:for="{{categoryRightList}}" wx:key="index">
+      <view class="little-category-title">{{item.cat_name}}</view>
+      <view class="little-category-goods" wx:for="{{item.child}}" wx:key="index" wx:for-item="data">
+        <navigator url="/pages/goodslist/goodslist?cat_id={{data.cat_id}}">
+          <image src="{{data.touch_icon}}"></image>
+          <view>{{data.cat_name}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,237 @@
+/* pages/home/home.wxss */
+@import "../template/template.wxss";
+.search-wipe{
+  width: 100%;
+  height:100rpx;
+  position: fixed;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+.search-wipe .weui-input{
+  width: 85%;
+  height: 60rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  margin-left:2% ;
+  line-height: 60rpx;
+  border-radius: 40rpx;
+  background-color: #fff;
+}
+.search-wipe .search-icon1{
+  width: 40rpx;
+  height: 40rpx;
+  transform: translateX(-60rpx);
+}
+.search-wipe .search-icon2{
+  width: 45rpx;
+  height: 40rpx;
+  transform: translateX(-20rpx);
+}
+.tab-nav-wrap{
+  position: fixed;
+  left: 0;
+  color: #fff;
+  z-index: 100;
+}
+.tab-nav{
+  width: 1200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1px solid rgba(128, 64, 64, 0.1);
+  background: transparent;
+  font-size: 28rpx;
+  transition: all 0.5s linear;
+}
+.tab-nav .tab-item{
+  float: left;
+  width: 150rpx;
+  text-align: center;
+  background: transparent;
+}
+.tab-nav .tab-item.active{
+  font-weight: bold;
+}
+.page-con{
+  position: relative;
+  left: 0;
+  width: 100%;
+}
+.swiper2{
+  width: 100%;
+  height: 180rpx;
+  border-radius: 0 0 50rpx 50rpx;
+}
+.changeBgc{
+  width: 100%;
+  height: 100%;
+}
+.swiper1{
+  height: 240rpx;
+  width: 96%;
+  margin: 0 2% ;
+  border-radius: 10rpx;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.slide-image{
+  width: 100%;
+  height: 240rpx;
+}
+.swiper3{
+  width: 96%;
+  margin: 0 2%;
+  height: 400rpx;
+  border-radius: 10rpx 10rpx 0 0;
+  overflow: hidden;
+  position: absolute;
+  top: 260rpx;
+  left: 0;
+}
+.news-wrap{
+  width: 96%;
+  padding: 14rpx 0;
+  margin: 0 2%;
+  background: #fff;
+  border-radius: 0 0 10rpx 10rpx;
+  position: absolute;
+  top:660rpx;
+  display: flex;
+}
+.news-wrap .rule{
+  width: 96%;
+  margin: 0 2%;
+  height: 2rpx;
+  background-color: #f4f4f4;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.news-wrap .header-img{
+  width: 140rpx;
+  height: 60rpx;
+  padding-left: 10rpx;
+}
+.news-wrap .news-list{
+  width: 510rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+.news-wrap .last-img{
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 15rpx;
+}
+.ad-img{
+  width: 96%;
+  height: 388rpx;
+  margin: 0 2%;
+  position: absolute;
+  top: 770rpx;
+  left: 0;
+}
+.ad-img image{
+  width: 100%;
+  height: 100%;
+}
+.seckill-wrap{
+  width: 96%;
+  margin: 0 2%;
+  position: absolute;
+  top: 1178rpx;
+  left: 0;
+  background-color: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.seckill-wrap .seckill-header{
+  width: 100%;
+  height: 44rpx;
+  padding: 44rpx 20rpx 24rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.seckill-wrap .seckill-header image{
+  width: 200rpx;
+  height: 44rpx;
+}
+.seckill-wrap .seckill-header .time-down{
+  width: 348rpx;
+  height: 44rpx;
+  display: flex;
+  color: #f00;
+  line-height: 44rpx;
+}
+.seckill-wrap .seckill-header .time-down view{
+  width: 140rpx;
+  font-size: 26rpx;
+  color: #333;
+  margin-right: 20rpx;
+}
+.seckill-wrap .seckill-header .time-down text{
+  background-color: #f00;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  display: block;
+  width: 46rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.seckill-wrap .seckill-content{
+  width: 100%;
+  height: 530rpx;
+}
+.seckill-wrap .seckill-content .ulList{
+  width: 100%;
+  height: 120rpx;
+  padding: 10rpx 0 0;
+  display: flex;
+}
+.seckill-wrap .seckill-content .ulList view{
+  width: 25%;
+  height: 100rpx;
+}
+.seckill-wrap .seckill-content .ulList .active{
+  border-bottom: 2px solid red;
+  transform: scale(1.2);
+}
+.seckill-wrap .seckill-content .ulList .active text{
+  color: #f00;
+}
+.seckill-wrap .seckill-content .ulList view text{
+  display: block;
+  width: 100%;
+  height: 40rpx;
+  text-align: center;
+  color: #999;
+}
+.seckill-wrap .seckill-content .ulList view .time{
+  font-size: 28rpx;
+  font-weight: 700;
+}
+.seckill-wrap .seckill-content .ulList view .item{
+  font-size: 24rpx;
+}
+.seckill-wrap .seckill-content .seckill-goods{
+  width: 100%;
+  height: 400rpx;
+}
+.seckill-wrap .seckill-footer{
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  font-size: 20rpx;
+}
+.isbast{
+  position: absolute;
+  top: 1900rpx;
+}

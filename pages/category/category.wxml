@@ -1,0 +1,24 @@
+<navbar params="{{params}}" />
+<!-- 头部搜索栏 -->
+<view class="weui-cell" style="margin-top:{{barH}}rpx">
+  <input class="weui-input" bindtap="toSearch"/>
+  <image class="search-right" src="../../images/tabBar/search.png"></image>
+</view>
+<view class="category-content" style="height:{{widH-52-barH/2}}px">
+   <!-- 左边分类导航区 -->
+  <scroll-view class="left-wrap">
+    <view class="left">
+      <!-- 自定义属性 data-current data-imagesrc-->
+      <view class="left-item  {{currentIndex==index?'active':''}}" wx:for="{{categoryLeftDatas}}" wx:key="index" data-current="{{index}}" data-imagesrc="{{item.touch_catads}}" data-catid="{{item.cat_id}}" bindtap="changeTabnav">{{item.cat_name}}</view>
+    </view>
+  </scroll-view>
+  <!-- 右边分类商品区 -->
+  <scroll-view class="right-wrap" scroll-y="true" bindscrolltolower="nextpage" current="{{cuurrentIndex}}">
+    <template is="adimage" data="{{adimageData:adimagesrc}}"></template>
+    <template is="content-category" data="{{categoryRightList:categoryRightDatas}}"></template>
+  </scroll-view>
+</view>
+ 
+<import src="../template/template.wxml"/> 
+
+

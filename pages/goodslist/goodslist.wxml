@@ -1,0 +1,88 @@
+<navbar params="{{params}}" />
+<!-- 头部搜索区 -->
+<view class="goodslist-header" style="margin-top:{{barH}}rpx">
+  <input type="text" placeholder="请输入商品" bindtap="toSearch"/>
+  <view class="icon-image">
+    <view wx:if="{{show}}" class="iconfont iconfenlei" bindtap="changelist"></view>
+    <view wx:else class="iconfont iconziyuan29" bindtap="changelist"></view>
+  </view>
+</view>
+<!-- 商品排序 -->
+<view class="goodslist-tab">
+  <view class="item {{currentNum==1?'active':''}}" data-current="1" bindtap="changerankZH">
+    综合
+    <view class="iconfont iconxiajiantou" wx:if="{{rankshowZH}}"></view>
+    <view class="iconfont iconshangjiantou" wx:else></view>
+  </view>
+  <view class="item {{currentNum==2?'active':''}}" data-current="2" bindtap="changerankXP">
+    新品
+  </view>
+  <view class="item {{currentNum==3?'active':''}}" data-current="3" bindtap="changerankXL">
+    销量
+  </view>
+  <view class="item {{currentNum==4?'active':''}}" data-current="4" bindtap="changerankJG">
+    价格
+    <view class="iconfont iconxiajiantou" wx:if="{{rankshowJG}}"></view>
+    <view class="iconfont iconshangjiantou" wx:else></view>
+  </view>
+  <view class="iconfont icon57shaixuan item" bindtap="showmaskFn">筛选</view>
+</view>
+<!-- 商品内容 -->
+<scroll-view class="goodslist-content" scroll-y="true" style="height:{{widH-searchH-tabH-barH/2}}px" bindscrolltolower="loadMore">
+  <view wx:if="{{show}}" class="lianghang" >
+    <view class="goodslist-goods" wx:for="{{goodslistDatas}}" wx:key="index">
+      <navigator url="/pages/goodsdetail/goodsdetail?goods_id={{item.goods_id}}">
+        <image src="{{item.goods_img}}"></image>
+        <view class="goodslist-title">{{item.goods_name}}</view>
+        <view class="goodslist-price">{{item.shop_price}}</view>
+        <text class="goshop">进店</text>
+        <text class="goshopnum">1w人已购买</text>
+        <text class="iconfont icongouwuchekong"></text>
+      </navigator>
+    </view>
+  </view>
+  <view wx:else class="yihang">
+    <view class="goodslist-goods" wx:for="{{goodslistDatas}}" wx:key="index">
+      <navigator url="/pages/goodsdetail/goodsdetail?goods_id={{item.goods_id}}">
+        <image src="{{item.goods_img}}"></image>
+        <view class="info">
+          <view class="goodslist-title">{{item.goods_name}}</view>
+          <view class="goodslist-price">{{item.shop_price}}</view>
+          <text class="goshop">进店</text>
+          <text class="goshopnum">1w人已购买</text>
+          <text class="iconfont icongouwuchekong"></text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</scroll-view>
+<!-- 侧边弹窗蒙版 -->
+<view class="mask-wrap" style="height:{{widH-barH/2}}px;top:{{barH}}rpx" wx:if="{{showmask}}">
+  <view class="mask" bindtap="closemaskFn"></view>
+  <view class="screen-wrap" animation="{{animationData}}">
+    <view class="ziying">
+      自营产品
+      <switch checked="{{switchChecked}}" bindchange="switchChange"/>
+    </view>
+    <view class="huo">
+      <view class="youhuo {{chooseyouhuo?'active':''}}" bindtap="youhuoFn">仅看有货</view>
+      <view class="cuxiao {{choosecuxiao?'active':''}}" bindtap="cuxiaoFn">促销</view>
+    </view>
+    <view class="price">
+      <view class="price-top">价格区间</view>
+      <view class="price-bottom">
+        <view>
+          <input type="text" placeholder="最低价" class="min-price" placeholder-style="placeholder" bindinput="priceMin"/>
+        </view>
+        <view>
+          <input type="text" placeholder="最高价" class="max-price" placeholder-style="placeholder" bindinput="priceMax"/>
+        </view>
+      </view>
+    </view>
+    <view class="choice">
+      <view class="close" bindtap="closemaskFn">关闭</view>
+      <view class="make" bindtap="confirmFn">确定</view>
+    </view>
+  </view>
+</view>
+
